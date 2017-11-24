@@ -48,8 +48,6 @@ class TceMain
 
         foreach ($referringObject->datamap['tx_urlforwarding_domain_model_redirect'] as $uidEditedRecord => $editedRecord) {
 
-            $editedRecord['domain'] = trim($editedRecord['domain'], ',');
-
             $equalRecords = $redirectRepository->getEqualRecords((string)$uidEditedRecord, $editedRecord);
 
             // Does the url exist in another record
@@ -61,6 +59,8 @@ class TceMain
 
                     // Lets test on domains
                 } else {
+                    $editedRecord['domain'] = trim($editedRecord['domain'], ',');
+
                     foreach ($equalRecords as $equalRecord) {
                         if ($equalRecord['domainUids'] === null) {
                             $allowed = false;
