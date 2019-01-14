@@ -297,6 +297,8 @@ class Redirect
         $this->getTypoScriptFrontendController()->tmpl->getFileName_backPath = PATH_site;
         $this->getTypoScriptFrontendController()->forceTemplateParsing = 1;
         $this->getTypoScriptFrontendController()->getConfigArray();
+        $this->getTypoScriptFrontendController()->config['config']['sys_language_uid'] = $this->languageUid;
+        $this->getTypoScriptFrontendController()->settingLanguage();
         $this->getTypoScriptFrontendController()->cObj = GeneralUtility::makeInstance(
             \TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer::class
         );
